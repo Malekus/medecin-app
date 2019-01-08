@@ -1,25 +1,6 @@
-
 <app-titre titreClasse="fas fa-user-md pr-2" titrePartie="Médecin"></app-titre>
 
-<div class="row">
-  <div class="col-12">
-    <div class="float-left">
-      <form method="GET" action="#" class="form-inline">
-        <div class="form-group mb-2">
-          <input class="form-control" placeholder="Médecin ou Spécialité" name="search" type="text">
-        </div>
-        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
-          Rechercher
-        </button>
-      </form>
-    </div>
-    <div class="float-right">
-      <a href="#" class="btn btn-success">
-        <span class="fas fa-plus"></span> Ajouter un médecin
-      </a>
-    </div>
-  </div>
-</div>
+<app-recherche titreBtn="Ajouter un médecin" placeholder="Médecin ou Spécialité"></app-recherche>
 
 <div class="row">
   <div class="col-12 mt-2">
@@ -41,9 +22,13 @@
           <td>{{ medecin.prenom }}</td>
           <td>{{ medecin.specialite }}</td>
           <td class="text-center">
-            <a class="btn btn-success mx-1"><span class="icon"><i class="fas fa-search"></i></span></a>
-            <a class="btn btn-info mx-1"><span class="icon"><i class="fas fa-edit"></i></span></a>
-            <a class="btn btn-danger mx-1"><span class="icon"><i class="fas fa-trash-alt"></i></span></a>
+            <a class="btn btn-success mx-1" routerLink="/medecin-show/{{medecin.id}}"><span
+              class="icon"><i
+              class="fas fa-search"></i></span></a>
+            <a class="btn btn-info mx-1" routerLink="/medecin-update/{{medecin.id}}"><span class="icon"><i
+              class="fas fa-edit"></i></span></a>
+            <a class="btn btn-danger mx-1" routerLink="/medecin-delete/{{medecin.id}}"><span class="icon"><i
+              class="fas fa-trash-alt"></i></span></a>
           </td>
         </tr>
         </tbody>

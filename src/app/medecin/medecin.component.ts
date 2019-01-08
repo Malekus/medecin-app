@@ -8,9 +8,9 @@ import {MedecinService} from "../medecin.service";
 })
 export class MedecinComponent implements OnInit {
 
-  medecins;
-  links;
-  meta;
+  medecins = [];
+  links = [];
+  meta = [];
 
   constructor(private medecinService: MedecinService) {
   }
@@ -21,9 +21,10 @@ export class MedecinComponent implements OnInit {
   }
 
   getMedecins(data) {
-    this.medecins = data.data;
-    this.links = data.links;
-    this.meta = data.meta;
+    this.medecins = data.data
+    this.links = data.links
+    this.meta = data.meta
   }
 
 }
+
