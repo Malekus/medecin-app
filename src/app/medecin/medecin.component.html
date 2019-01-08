@@ -1,6 +1,53 @@
-<h1>Médecin</h1>
 
-<ul *ngFor = "let medecin of medecins">
-  <li>Nom : Dr {{medecin.nom}} Prenom: {{medecin.prenom}}</li>
-  <p>Diplôme : {{medecin.diplome}} Spécialité: {{medecin.specialite}}</p>
-</ul>
+<app-titre titreClasse="fas fa-user-md pr-2" titrePartie="Médecin"></app-titre>
+
+<div class="row">
+  <div class="col-12">
+    <div class="float-left">
+      <form method="GET" action="#" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Médecin ou Spécialité" name="search" type="text">
+        </div>
+        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
+          Rechercher
+        </button>
+      </form>
+    </div>
+    <div class="float-right">
+      <a href="#" class="btn btn-success">
+        <span class="fas fa-plus"></span> Ajouter un médecin
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 mt-2">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Spécialité</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let medecin of medecins; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ medecin.nom }}</td>
+          <td>{{ medecin.prenom }}</td>
+          <td>{{ medecin.specialite }}</td>
+          <td class="text-center">
+            <a class="btn btn-success mx-1"><span class="icon"><i class="fas fa-search"></i></span></a>
+            <a class="btn btn-info mx-1"><span class="icon"><i class="fas fa-edit"></i></span></a>
+            <a class="btn btn-danger mx-1"><span class="icon"><i class="fas fa-trash-alt"></i></span></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

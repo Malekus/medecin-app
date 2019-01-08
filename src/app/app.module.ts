@@ -11,6 +11,10 @@ import {PatientComponent} from './patient/patient.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {MedecinComponent} from './medecin/medecin.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { TitreComponent } from './titre/titre.component';
+import { MedicamentComponent } from './medicament/medicament.component';
+import { ConsultationComponent } from './consultation/consultation.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     HeaderComponent,
     PatientComponent,
     MedecinComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    StatistiqueComponent,
+    TitreComponent,
+    MedicamentComponent,
+    ConsultationComponent
   ],
   imports: [
     BrowserModule,
