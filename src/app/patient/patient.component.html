@@ -1,0 +1,6 @@
+<h1>Patients</h1>
+
+<ul *ngFor = "let patient of patients">
+  <li>Nom : {{patient.nom}} Prenom: {{patient.prenom}} Adresse: {{ patient.adresse }}</li>
+  <li>N° sécurité sociale : {{patient.numsecu}} Tél: {{patient.tel}}</li>
+</ul>
