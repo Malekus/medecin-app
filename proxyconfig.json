@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://www.medecinapi.malekus.fr/public_html",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

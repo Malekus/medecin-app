@@ -26,5 +26,9 @@ export class MedecinComponent implements OnInit {
     this.meta = data.meta
   }
 
+  add(){
+
+  }
+
 }
 

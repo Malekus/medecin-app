@@ -16,7 +16,7 @@ export class MedecinShowComponent implements OnInit {
 
   ngOnInit() {
     this.medecinService.getMedecin(this.route.snapshot.params['id'])
-      .subscribe((data) => this.getMedecin(data));
+      .subscribe((data: any) => this.getMedecin(data));
   }
 
   getMedecin(data) {

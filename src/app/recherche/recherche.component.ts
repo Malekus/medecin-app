@@ -9,6 +9,8 @@ export class RechercheComponent implements OnInit {
 
   @Input() titreBtn: string;
   @Input() placeholder: string;
+  @Input() modalName: string;
+
 
   constructor() {
   }

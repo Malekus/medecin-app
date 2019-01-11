@@ -22,6 +22,9 @@ import {MedecinShowComponent} from './medecin-show/medecin-show.component';
 import {MedecinDeleteComponent} from './medecin-delete/medecin-delete.component';
 import {MedecinAddComponent} from './medecin-add/medecin-add.component';
 import {MedecinUpdateComponent} from './medecin-update/medecin-update.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { TitreShowComponent } from './titre-show/titre-show.component';
 
 
 @NgModule({
@@ -42,12 +45,16 @@ import {MedecinUpdateComponent} from './medecin-update/medecin-update.component'
     MedecinShowComponent,
     MedecinDeleteComponent,
     MedecinAddComponent,
-    MedecinUpdateComponent
+    MedecinUpdateComponent,
+    DropdownComponent,
+    TitreShowComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

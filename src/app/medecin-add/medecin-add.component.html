@@ -1,3 +1,84 @@
-<p>
-  medecin-add works!
-</p>
+<!--
+    <div class="form-group row justify-content-center">
+      <label for="nom" class="col-lg-3 col-form-label">Prénom</label>
+      <div class="col-lg-9">
+        <input class="form-control" required="required" [formControlName="prenom"] name="prenom" type="text" id="prenom">
+        <div class="invalid-feedback">
+          Saisir un prenom
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <label for="nom" class="col-lg-3 col-form-label">Diplôme</label>
+      <div class="col-lg-9">
+        <input class="form-control" required="required" [formControlName="diplome"] name="diplome" type="text" id="diplome">
+        <div class="invalid-feedback">
+          Saisir un diplome
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <label for="nom" class="col-lg-3 col-form-label">Spécialité</label>
+      <div class="col-lg-9">
+        <input class="form-control" required="required" [formControlName="specialite"] name="specialite" type="text" id="specialite">
+        <div class="invalid-feedback">
+          Saisir un spécialité
+        </div>
+      </div>
+    </div>
+-->
+
+
+
+<div class="modal fade" id="{{ idModal }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un médecin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-lg-12">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Nom</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="nom" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Prénom</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="prenom" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Diplôme</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="diplome" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Spécialité</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="specialite" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

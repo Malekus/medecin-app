@@ -11,9 +11,36 @@
       </form>
     </div>
     <div class="float-right">
-      <a href="#" class="btn btn-success">
+      <button type="button" class="btn btn-success" data-toggle="modal" attr.data-target="#{{ modalName }}">
         <span class="fas fa-plus mr-2"></span>{{ titreBtn }}
-      </a>
+      </button>
     </div>
   </div>
 </div>
+
+<app-medecin-add idModal="{{ modalName }}"></app-medecin-add>
+
+
+<!--
+<div class="modal fade" id="{{ modalName }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un médecin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-medecin-add></app-medecin-add>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->

@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+$atom: #2c3e50;
+$atom-dark: #233245;
+
 body {
   margin: 0;
   padding: 0;
@@ -85,4 +88,18 @@ body {
   .main-content {
     margin-left: 250px !important;
   }
+}
+
+.active-atom {
+  z-index: 2;
+  color: #fff;
+  background-color: $atom;
+  border-color: $atom;
+}
+
+.active-atom-dark {
+  z-index: 2;
+  color: #fff;
+  background-color: $atom-dark;
+  border-color: $atom-dark;
 }
