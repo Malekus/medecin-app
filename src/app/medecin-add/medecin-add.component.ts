@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {MedecinService} from "../medecin.service";
+import {MedecinService} from "../service/medecin.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -31,7 +31,7 @@ export class MedecinAddComponent implements OnInit {
   onSubmit() {
     console.log(this.addForm.value);
     this.medecinService.postMedecin(this.addForm.value)
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         let element: HTMLElement = document.getElementById("btnClose");
         element.click();
         this.route.navigate(['medecin-show/' + data.data.id])
