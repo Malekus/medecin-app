@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {MedicamentService} from "../service/medicament.service";
 
 @Component({
   selector: 'app-medicament',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicamentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private medicamentService: MedicamentService) {
+  }
 
   ngOnInit() {
+  }
+
+  test() {
+    console.log("toto");
+
   }
 
 }

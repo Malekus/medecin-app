@@ -25,6 +25,10 @@ import {MedecinUpdateComponent} from './medecin-update/medecin-update.component'
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { TitreShowComponent } from './titre-show/titre-show.component';
+import { CentreAddComponent } from './centre-add/centre-add.component';
+import { ConsultationAddComponent } from './consultation-add/consultation-add.component';
+import { PatientAddComponent } from './patient-add/patient-add.component';
+import { MedecinFormComponent } from './medecin-form/medecin-form.component';
 
 
 @NgModule({
@@ -47,7 +51,11 @@ import { TitreShowComponent } from './titre-show/titre-show.component';
     MedecinAddComponent,
     MedecinUpdateComponent,
     DropdownComponent,
-    TitreShowComponent
+    TitreShowComponent,
+    CentreAddComponent,
+    ConsultationAddComponent,
+    PatientAddComponent,
+    MedecinFormComponent
   ],
   imports: [
     BrowserModule,

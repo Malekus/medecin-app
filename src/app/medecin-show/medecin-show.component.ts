@@ -9,18 +9,25 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class MedecinShowComponent implements OnInit {
 
-  medecin = [];
-
+  medecin: object = [];
+  centre: object = [];
+  consultations: object = [];
   constructor(private route: ActivatedRoute, private medecinService: MedecinService) {
   }
 
   ngOnInit() {
     this.medecinService.getMedecin(this.route.snapshot.params['id'])
-      .subscribe((data: any) => this.getMedecin(data));
+      .subscribe((data: any) => {
+          this.getMedecin(data.data)
+      }
+
+      );
   }
 
   getMedecin(data) {
-    this.medecin = data.data;
+    this.medecin = data;
+    this.centre = data.centre;
+    this.consultations = data.consultations;
   }
 
 }

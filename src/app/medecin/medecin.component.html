@@ -1,6 +1,7 @@
 <app-titre titreClasse="fas fa-user-md pr-2" titrePartie="Médecin"></app-titre>
 
-<app-recherche titreBtn="Ajouter un médecin" placeholder="Médecin ou Spécialité" modalName="modalAddMedecin"></app-recherche>
+<app-recherche titreBtn="Ajouter un médecin" placeholder="Médecin ou Spécialité"
+               modalName="modalAddMedecin"></app-recherche>
 
 <div class="row">
   <div class="col-12 mt-2">
@@ -25,11 +26,18 @@
             <a class="btn btn-success mx-1" routerLink="/medecin-show/{{medecin.id}}"><span
               class="icon"><i
               class="fas fa-search"></i></span></a>
-            <a class="btn btn-info mx-1" routerLink="/medecin-update/{{medecin.id}}"><span class="icon"><i
+            <a class="btn btn-info mx-1" data-toggle="modal" attr.data-target="#medecinUpdate{{ medecin.id }}"><span
+              class="icon"><i
               class="fas fa-edit"></i></span></a>
-            <a class="btn btn-danger mx-1" routerLink="/medecin-delete/{{medecin.id}}"><span class="icon"><i
+            <a class="btn btn-danger mx-1" data-toggle="modal" attr.data-target="#medecinDelete{{ medecin.id }}"><span
+              class="icon"><i
               class="fas fa-trash-alt"></i></span></a>
           </td>
+          <div class="no-height">
+
+            <app-medecin-update idModal="medecinUpdate{{ medecin.id }}" idMedecin="{{medecin.id}}"></app-medecin-update>
+            <app-medecin-delete idModal="medecinDelete{{ medecin.id }}" idMedecin="{{medecin.id}}"></app-medecin-delete>
+          </div>
         </tr>
         </tbody>
       </table>

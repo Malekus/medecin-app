@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
+import {MedecinService} from "../service/medecin.service";
+import {ActivatedRoute} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {FormService} from "../form.service";
 
 @Component({
   selector: 'app-medecin-update',
@@ -7,9 +12,73 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedecinUpdateComponent implements OnInit {
 
-  constructor() { }
+  @Input() idModal: string;
+  @Input() idMedecin: string = null;
 
-  ngOnInit() {
+  specialites: any = [];
+  diplomes: any = [];
+
+  updateFormMedecin: any = new FormGroup({
+    nom: new FormControl(),// ['', Validators.required],
+    prenom: new FormControl(),//['', [Validators.required]],
+    diplome: new FormControl(),//['', [Validators.required]],
+    specialite: new FormControl(),//['', [Validators.required]],
+  });
+
+
+  constructor(private medecinService: MedecinService, private formService: FormService, private http: HttpClient, private route: ActivatedRoute) {
+
   }
 
+  ngOnInit() {
+
+    let id = this.idMedecin != null ? this.idMedecin : this.route.snapshot.params['id'];
+    this.medecinService.getMedecin(id)
+      .subscribe((data: any) => {
+        this.initForm(data.data)
+      })
+
+    this.formService.getDiplomes()
+      .subscribe((data: any) => {
+        this.diplomes = Object.entries(data);
+      })
+
+
+    /*
+    this.formService.getSpecialites()
+      .subscribe((data : any) => {
+        this.specialites = Object.entries(data);
+      })
+
+        */
+
+  }
+
+  initForm(data) {
+    this.updateFormMedecin = new FormGroup({
+      nom: new FormControl(data.nom),// ['', Validators.required],
+      prenom: new FormControl(data.prenom),//['', [Validators.required]],
+      diplome: new FormControl(6),//['', [Validators.required]],
+      specialite: new FormControl(data.specialite),//['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+
+    /*this.medecinService.postMedecin(this.updateFormMedecin.value)
+      .subscribe((data : any) => {
+        console.log(data)
+      })
+    */
+  }
+
+  getValue(type, value) {
+    if (type == 'diplome') {
+      this.diplomes.forEach(function (element) {
+        if(element[1] == value){
+          return element[0]
+        }
+      });
+    }
+  }
 }

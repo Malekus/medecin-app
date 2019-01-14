@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MedecinService} from "../service/medecin.service";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-medecin',
@@ -12,22 +14,19 @@ export class MedecinComponent implements OnInit {
   links = [];
   meta = [];
 
-  constructor(private medecinService: MedecinService) {
+  constructor(private medecinService: MedecinService, private http: HttpClient) {
+    this.medecinService.getMedecins()
+      .subscribe((data) => this.getMedecins(data));
   }
 
   ngOnInit() {
-    this.medecinService.getMedecins()
-      .subscribe((data) => this.getMedecins(data));
+
   }
 
   getMedecins(data) {
     this.medecins = data.data
     this.links = data.links
     this.meta = data.meta
-  }
-
-  add(){
-
   }
 
 }
