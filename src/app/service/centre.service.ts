@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -27,5 +27,13 @@ export class CentreService {
 
   deleteCentre(id) {
     return this.http.delete('api/centre/' + id);
+  }
+
+  addPatient(data: any) {
+    return this.http.post('api/centre/addPatient', data);
+  }
+
+  removePatient(data: any) {
+    return this.http.post('api/centre/removePatient', data);
   }
 }

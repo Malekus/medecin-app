@@ -1,3 +1,51 @@
 <app-titre titreClasse="fas fa-pills pr-2" titrePartie="Médicament"></app-titre>
 
-{{ test()}}
+<div class="row">
+  <div class="col-12">
+    <div class="float-left">
+      <form (ngSubmit)="onSearch(search.value)" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Nom" #search name="search" type="text">
+        </div>
+        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
+          Rechercher
+        </button>
+      </form>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success">
+        <span class="fas fa-plus mr-2"></span>Ajouter un médicament
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="medicaments">
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Nombre de fois utilisé</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let medicament of medicaments; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ medicament.nom }}</td>
+            <td>{{ medicament.type }}</td>
+            <td>{{ medicament.consultations.length }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-loader variableShow="{{ medicaments }}"></app-loader>

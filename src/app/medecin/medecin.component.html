@@ -1,46 +1,62 @@
 <app-titre titreClasse="fas fa-user-md pr-2" titrePartie="Médecin"></app-titre>
 
-<app-recherche titreBtn="Ajouter un médecin" placeholder="Médecin ou Spécialité"
-               modalName="modalAddMedecin"></app-recherche>
-
 <div class="row">
-  <div class="col-12 mt-2">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Spécialité</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let medecin of medecins; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ medecin.nom }}</td>
-          <td>{{ medecin.prenom }}</td>
-          <td>{{ medecin.specialite }}</td>
-          <td class="text-center">
-            <a class="btn btn-success mx-1" routerLink="/medecin-show/{{medecin.id}}"><span
-              class="icon"><i
-              class="fas fa-search"></i></span></a>
-            <a class="btn btn-info mx-1" data-toggle="modal" attr.data-target="#medecinUpdate{{ medecin.id }}"><span
-              class="icon"><i
-              class="fas fa-edit"></i></span></a>
-            <a class="btn btn-danger mx-1" data-toggle="modal" attr.data-target="#medecinDelete{{ medecin.id }}"><span
-              class="icon"><i
-              class="fas fa-trash-alt"></i></span></a>
-          </td>
-          <div class="no-height">
-
-            <app-medecin-update idModal="medecinUpdate{{ medecin.id }}" idMedecin="{{medecin.id}}"></app-medecin-update>
-            <app-medecin-delete idModal="medecinDelete{{ medecin.id }}" idMedecin="{{medecin.id}}"></app-medecin-delete>
-          </div>
-        </tr>
-        </tbody>
-      </table>
+  <div class="col-12">
+    <div class="float-left">
+      <form (ngSubmit)="onSearch(search.value)" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Nom" #search name="search" type="text">
+        </div>
+        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
+          Rechercher
+        </button>
+      </form>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success" routerLink="/medecin-add">
+        <span class="fas fa-plus mr-2"></span>Ajouter un médecin
+      </button>
     </div>
   </div>
+</div>
+
+<div *ngIf="medecins">
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Spécialité</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let medecin of medecins; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ medecin.nom }}</td>
+            <td>{{ medecin.prenom }}</td>
+            <td>{{ medecin.specialite }}</td>
+            <td class="text-center">
+              <a class="btn btn-success mx-1" routerLink="/medecin-show/{{medecin.id}}"><span
+                class="icon"><i
+                class="fas fa-search"></i></span></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loader variableShow="{{ medecins }}"></app-loader>
+
+<div *ngIf="existe">
+  <button type="button" class="btn btn-success" routerLink="/medecin-add">
+    <span class="fas fa-plus mr-2"></span>Ajouter un médecin
+  </button>
 </div>

@@ -1,0 +1,41 @@
+<app-titre titreClasse="fas fa-user-injured pr-2" titrePartie="Ajouter un médicament au patient"></app-titre>
+
+<app-loader variableShow="{{ show }}"></app-loader>
+
+<div *ngIf="show">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="formAddPatientMedicament" (ngSubmit)="onSubmit()">
+        <div class="form-group row justify-content-center">
+          <label class="col-lg-2 col-form-label">Consultation</label>
+          <div class="col-lg-6">
+            <select class="form-control" formControlName="consultation"
+                    [ngClass]="{ 'is-invalid': submitted && f.consultation.errors }">
+              <option *ngFor="let consultation of consultations" [value]="consultation[0]">{{ consultation[1] }} - {{ consultation[2] }}</option>
+            </select>
+            <div *ngIf="submitted && f.consultation.errors" class="invalid-feedback">
+              <div *ngIf="f.consultation.errors.required">Le consultation est obligation</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row justify-content-center">
+          <label class="col-lg-2 col-form-label">Médicament</label>
+          <div class="col-lg-6">
+            <select class="form-control" formControlName="medicament"
+                    [ngClass]="{ 'is-invalid': submitted && f.medicament.errors }">
+              <option *ngFor="let medicament of medicaments" [value]="medicament[0]">{{ medicament[1] }} - {{ medicament[2] }}</option>
+            </select>
+            <div *ngIf="submitted && f.medicament.errors" class="invalid-feedback">
+              <div *ngIf="f.medicament.errors.required">Le médicament est obligation</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row text-center">
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Ajouter</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

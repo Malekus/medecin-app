@@ -30,14 +30,6 @@ export class CentreAddComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addCentreForm.value);
-    /*
-    this.medecinService.postMedecin(this.addFormMedecin.value)
-      .subscribe((data: any) => {
-        let element: HTMLElement = document.getElementById("btnClose");
-        element.click();
-        this.route.navigate(['medecin-show/' + data.data.id])
-      });
-    */
 
     this.addCentreForm = new FormGroup({
       nom: new FormControl(),// ['', Validators.required],
@@ -49,4 +41,7 @@ export class CentreAddComponent implements OnInit {
     element.click();
 
   }
+
+
+
 }

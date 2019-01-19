@@ -9,8 +9,10 @@ export class MedecinService {
   constructor(private http: HttpClient) {
   }
 
-  getMedecins() {
-    return this.http.get('/api/medecins')
+  getMedecins(search = null) {
+    if(search == null)
+      return this.http.get('/api/medecins')
+    return this.http.get('/api/medecins?search=' + search)
   }
 
   getMedecin(id) {

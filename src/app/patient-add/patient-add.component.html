@@ -1,3 +1,144 @@
-<p>
-  patient-add works!
-</p>
+<!--
+<div class="modal fade" id="modalAddPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un médecin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-lg-12">
+        <form [formGroup]="addFormPatient" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Nom</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="nom" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Prénom</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="prenom" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">N°Sécurité Sociale</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="nom" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Adresse</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="adresse" type="text">
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <label class="col-lg-3 col-form-label">Téléphone</label>
+              <div class="col-lg-9">
+                <input class="form-control" formControlName="tel" type="text">
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+
+<app-titre titreClasse="fas fa-user-injured pr-2" titrePartie="Ajouter un patient"></app-titre>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <form [formGroup]="addFormPatient" (ngSubmit)="onSubmit()">
+
+
+      <div class="form-group row justify-content-center">
+        <label class="col-lg-2 col-form-label">Nom</label>
+        <div class="col-lg-6">
+          <input type="text" formControlName="nom" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"/>
+          <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+            <div *ngIf="f.nom.errors.required">Le champ nom est obligation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <label class="col-lg-2 col-form-label">Prénom</label>
+        <div class="col-lg-6">
+          <input type="text" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"/>
+          <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+            <div *ngIf="f.prenom.errors.required">Le prénom est obligation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <label class="col-lg-2 col-form-label">N°Sécurité Sociale</label>
+        <div class="col-lg-6">
+          <input type="text" formControlName="numsecu" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numsecu.errors }"/>
+          <div *ngIf="submitted && f.numsecu.errors" class="invalid-feedback">
+            <div *ngIf="f.numsecu.errors.maxlength">Le n° sécurité sociale doit faire 15 caractères</div>
+            <div *ngIf="f.numsecu.errors.pattern">Le n° sécurité sociale n'est pas valide</div>
+            <div *ngIf="f.numsecu.errors.required">Le n° sécurité sociale est obligation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <label class="col-lg-2 col-form-label">Adresse</label>
+        <div class="col-lg-6">
+          <input type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }"/>
+          <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+            <div *ngIf="f.adresse.errors.required">L'adresse est obligation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <label class="col-lg-2 col-form-label">Téléphone</label>
+        <div class="col-lg-6">
+          <input type="text" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }"/>
+          <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+            <div *ngIf="f.tel.errors.maxlength">Le téléphone est trop grand (15 caractères max)</div>
+            <div *ngIf="f.tel.errors.pattern">Le téléphone n'est pas valide</div>
+            <div *ngIf="f.tel.errors.required">Le tépéhone est obligation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row text-center">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+<!--
+
+
+
+
+
+
+-->

@@ -13,6 +13,10 @@ export class FormService {
     return this.http.get('/api/form/centreTypes')
   }
 
+  getCentres() {
+    return this.http.get('/api/form/centres')
+  }
+
   getPatients() {
     return this.http.get('/api/form/patients')
   }
@@ -38,14 +42,7 @@ export class FormService {
     return this.http.get('/api/form/specialites')
   }
 
-  getDiplomesLT() {
-    if (localStorage.getItem('diplomes') === null) {
-      this.http.get('/api/form/diplomes')
-        .subscribe((data: any) => {
-          localStorage.setItem('diplomes', data);
-        })
-
-    }
-    return localStorage.getItem('diplomes');
+  getConsultationTypes(){
+    return this.http.get('/api/form/consultationTypes')
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -9,8 +9,10 @@ export class ConsultationService {
   constructor(private http: HttpClient) {
   }
 
-  getConsultations() {
-    return this.http.get('/api/consultations')
+  getConsultations(search = null) {
+    if (search == null)
+      return this.http.get('/api/consultations')
+    return this.http.get('/api/consultations?search=' + search)
   }
 
   getConsultation(id) {
@@ -27,5 +29,13 @@ export class ConsultationService {
 
   deleteConsultation(id) {
     return this.http.delete('api/consultation/' + id);
+  }
+
+  addMedicament(data: any) {
+    return this.http.post('api/consultation/addMedicament', data);
+  }
+
+  removeMedicament(data: any) {
+    return this.http.post('api/consultation/removeMedicament', data);
   }
 }

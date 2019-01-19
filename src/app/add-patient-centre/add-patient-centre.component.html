@@ -1,0 +1,29 @@
+<app-titre titreClasse="fas fa-user-injured pr-2" titrePartie="Ajouter un centre au patient"></app-titre>
+
+<app-loader variableShow="{{ show }}"></app-loader>
+
+<div *ngIf="show">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="formAddPatientCentre" (ngSubmit)="onSubmit()">
+        <div class="form-group row justify-content-center">
+          <label class="col-lg-2 col-form-label">Centre</label>
+          <div class="col-lg-6">
+            <select class="form-control" formControlName="centre"
+                    [ngClass]="{ 'is-invalid': submitted && f.centre.errors }">
+              <option *ngFor="let centre of centres" [value]="centre[0]">{{ centre[1] }} - {{ centre[2] }}</option>
+            </select>
+            <div *ngIf="submitted && f.centre.errors" class="invalid-feedback">
+              <div *ngIf="f.centre.errors.required">Le centre est obligation</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row text-center">
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Ajouter</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,55 @@
 <app-titre titreClasse="fas fa-notes-medical pr-2" titrePartie="Consultation"></app-titre>
+
+<div class="row">
+  <div class="col-12">
+    <div class="float-left">
+      <form (ngSubmit)="onSearch(search.value)" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Nom" #search name="search" type="text">
+        </div>
+        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
+          Rechercher
+        </button>
+      </form>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success">
+        <span class="fas fa-plus mr-2"></span>Ajouter une consultation
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="consultations">
+
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Médecin</th>
+            <th>Patient</th>
+            <th>Nombre de médicament prescrit</th>
+            <th>Type de consultation</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let consultation of consultations; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ consultation.medecin.nom | uppercase}} {{ consultation.medecin.prenom }}</td>
+            <td>{{ consultation.patient.nom | uppercase}} {{ consultation.patient.prenom }}</td>
+            <td>{{ consultation.medicaments.length }}</td>
+            <td>{{ consultation.type.label }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<app-loader variableShow="{{ consultations }}"></app-loader>

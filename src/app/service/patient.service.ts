@@ -8,8 +8,10 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatients() {
-    return this.http.get('/api/patients')
+  getPatients(search = null) {
+    if(search == null)
+      return this.http.get('/api/patients')
+    return this.http.get('/api/patients?search=' + search)
   }
 
   getPatient(id) {

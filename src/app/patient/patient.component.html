@@ -1,6 +1,66 @@
 <app-titre titreClasse="fas fa-user-injured pr-2" titrePartie="Patient"></app-titre>
 
-<ul *ngFor = "let patient of patients">
-  <li>Nom : {{patient.nom}} Prenom: {{patient.prenom}} Adresse: {{ patient.adresse }}</li>
-  <li>N° sécurité sociale : {{patient.numsecu}} Tél: {{patient.tel}}</li>
-</ul>
+<div class="row">
+  <div class="col-12">
+    <div class="float-left">
+      <form (ngSubmit)="onSearch(search.value)" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Nom" #search name="search" type="text">
+        </div>
+        <button type="submit" class="btn btn-info mx-sm-3 mb-2">
+          Rechercher
+        </button>
+      </form>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success" routerLink="/patient-add">
+        <span class="fas fa-plus mr-2"></span>Ajouter un patient
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="patients">
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>N° Sécurité social</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let patient of patients; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ patient.nom }}</td>
+            <td>{{ patient.prenom }}</td>
+            <td>{{ patient.numsecu }}</td>
+            <td class="text-center">
+              <a class="btn btn-success mx-1" routerLink="/patient-show/{{patient.id}}"><span
+                class="icon"><i
+                class="fas fa-search"></i></span></a>
+              <a class="btn btn-primary mx-1" routerLink="/patient-update/{{patient.id}}"><span
+                class="icon"><i
+                class="fas fa-edit"></i></span></a>
+              <a class="btn btn-danger mx-1" data-toggle="modal" attr.data-target="#patientDelete{{ patient.id }}"><span
+                class="icon"><i
+                class="fas fa-trash-alt"></i></span></a>
+            </td>
+            <div class="no-height">
+              <app-patient-delete idModal="patientDelete{{ patient.id }}" idPatient="{{patient.id}}"
+                                  nom="{{ patient.nom }}" prenom="{{ patient.prenom }}"></app-patient-delete>
+            </div>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loader variableShow="{{ patients }}"></app-loader>

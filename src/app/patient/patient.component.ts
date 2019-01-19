@@ -11,19 +11,31 @@ export class PatientComponent implements OnInit {
   patients;
   links;
   meta;
+  search;
 
   constructor(private patientService: PatientService) {
   }
 
   ngOnInit() {
     this.patientService.getPatients()
-      .subscribe((data) =>  this.getPatients(data));
+      .subscribe((data) => {
+        this.setPatients(data)
+      });
   }
 
-  getPatients(data){
+  setPatients(data) {
     this.patients = data.data;
     this.links = data.links;
     this.meta = data.meta;
   }
+
+  onSearch(searching) {
+    this.patients = [];
+    this.patientService.getPatients(searching)
+      .subscribe((data) => {
+        this.setPatients(data)
+      });
+  }
+
 
 }

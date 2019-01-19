@@ -16,38 +16,44 @@ export class MedecinAddComponent implements OnInit {
 
   diplomes: any = [];
   specialites: any = [];
+  submitted = false;
+  addFormMedecin: FormGroup;
 
-  addFormMedecin = new FormGroup({
-    nom: new FormControl(),// ['', Validators.required],
-    prenom: new FormControl(),//['', [Validators.required]],
-    diplome: new FormControl(),//['', [Validators.required]],
-    specialite: new FormControl(),//['', [Validators.required]],
-  });
 
   constructor(private medecinService: MedecinService, private formService: FormService, private route: Router) {
     this.formService.getSpecialites()
-      .subscribe((data : any) => {
+      .subscribe((data: any) => {
         this.specialites = Object.entries(data);
       })
 
 
     this.formService.getDiplomes()
-      .subscribe((data : any) => {
+      .subscribe((data: any) => {
         this.diplomes = Object.entries(data);
       })
   }
 
   ngOnInit() {
+    this.addFormMedecin = new FormGroup({
+      nom: new FormControl(),// ['', Validators.required],
+      prenom: new FormControl(),//['', [Validators.required]],
+      diplome: new FormControl(),//['', [Validators.required]],
+      specialite: new FormControl(),//['', [Validators.required]],
+    });
 
   }
 
 
   onSubmit() {
+    this.submitted = true;
+
+    if (this.addFormMedecin.invalid) {
+      return;
+    }
+
     this.medecinService.postMedecin(this.addFormMedecin.value)
       .subscribe((data: any) => {
-        let element: HTMLElement = document.getElementById("btnClose");
-        element.click();
-        this.route.navigate(['medecin-show/' + data.data.id])
+        this.route.navigate(['/medecin-show/' + data.data.id])
       });
   }
 

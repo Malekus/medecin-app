@@ -1,0 +1,198 @@
+<div *ngIf="show">
+  <div class="row">
+    <div class="col-8">
+      <h1><i class="fas fa-user-injured pr-2"></i>{{ patient.nom | uppercase }} {{patient.prenom}}</h1>
+    </div>
+
+    <div class="col-4">
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle pull-right my-2" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">Ajouter une action
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button type="button" class="dropdown-item" routerLink="/patient-update/{{patient.id}}"><span
+            class="icon mr-2"><i class="fas fa-edit"></i></span>Modifier le patient
+          </button>
+          <button type="button" class="dropdown-item" data-toggle="modal"
+                  attr.data-target="#patientDelete{{patient.id}}">
+            <span class="icon mr-2"><i class="fas fa-trash-alt"></i></span>Supprimer le patient
+          </button>
+
+          <button type="button" class="dropdown-item" routerLink="/patient-add-centre/{{patient.id}}">
+            <span class="icon mr-2"><i class="fas fa-hospital-alt"></i></span>Ajouter un centre
+          </button>
+
+          <button type="button" class="dropdown-item" routerLink="/consultation-add/{{ patient.id}}">
+            <span class="icon mr-2"><i class="fas fa-notes-medical"></i></span>Ajouter une consultation
+          </button>
+
+          <button type="button" class="dropdown-item" routerLink="/patient-add-medicament/{{ patient.id}}">
+            <span class="icon mr-2"><i class="fas fa-pills"></i></span>Ajouter un médicament
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 p-2">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <ul class="list-group">
+            <li class="list-group-item active-atom">Information</li>
+            <li class="list-group-item">Nom : {{ patient.nom }}</li>
+            <li class="list-group-item">Prénom: {{ patient.prenom }}</li>
+            <li class="list-group-item">N° Sécurité Sociale: {{ patient.numsecu }}</li>
+            <li class="list-group-item">Adresse: {{ patient.adresse }}</li>
+            <li class="list-group-item">Téléphone: {{ patient.tel }}</li>
+
+          </ul>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+          <ul class="list-group">
+            <li class="list-group-item active-atom">Activité</li>
+            <li class="list-group-item">Dernière activité: {{ patient.maj.date | date }}</li>
+            <li class="list-group-item">Nb de centre: {{ patient.centres.length }}</li>
+            <li class="list-group-item">Nb de consultation: {{ patient.consultations.length }}</li>
+            <li class="list-group-item">Nb de médicament préscrit: {{ patient.medicaments.length / 2 }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="patient.centres?.length != 0">
+    <div class="col-12">
+      <div class="row">
+        <h2>Centre</h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Adresse</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let centre of patient.centres; let i = index">
+            <td>{{ i + 1}}</td>
+            <td>{{ centre.nom }}</td>
+            <td>{{ centre.label }}</td>
+            <td>{{ centre.adresse }}</td>
+            <td class="text-center">
+              <button type="button" class="btn btn-danger mx-1" data-toggle="modal"
+                      attr.data-target="#deletePatientCentre{{centre.id}}">
+                <span class="icon"><i class="fas fa-trash-alt"></i></span>
+              </button>
+            </td>
+            <div class="no-height">
+              <app-remove-patient-centre nom="{{patient.nom}}" prenom="{{patient.prenom}}" centreNom="{{centre.nom}}"
+                                         idCentre="{{centre.centre_id}}"
+                                         idModal="deletePatientCentre{{centre.id}}"></app-remove-patient-centre>
+            </div>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="patient.consultations?.length != 0">
+    <div class="col-12">
+      <div class="row">
+        <h2>Consultation</h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Médecin</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let consultation of patient.consultations; let i = index">
+            <td>{{ i + 1}}</td>
+            <td>Dr {{ consultation.prenom }} {{ consultation.nom | uppercase}}</td>
+            <td>{{ consultation.label }}</td>
+            <td>{{ consultation.created_at | date }}</td>
+            <td class="text-center">
+              <button type="button" class="btn btn-primary mx-1"
+                      routerLink="/consultation-update/{{ consultation.id }}">
+                <span class="icon"><i class="fas fa-edit"></i></span>
+              </button>
+              <button type="button" class="btn btn-danger mx-1" data-toggle="modal"
+                      attr.data-target="#deleteConsultation{{consultation.id}}">
+                <span class="icon"><i class="fas fa-trash-alt"></i></span>
+              </button>
+            </td>
+            <div class="no-height">
+              <app-remove-patient-consultation nomMedecin="{{ consultation.medecin_id }}"
+                                               typeConsultation="{{ consultation.type_id}}"
+                                               idModal="deleteConsultation{{consultation.id}}"
+                                               idConsultation="{{ consultation.id }}"></app-remove-patient-consultation>
+            </div>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="medicaments?.length != 0">
+    <div class="col-12">
+      <div class="row">
+        <h2>Médicament</h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let medicament of medicaments; let i = index">
+            <td>{{ i + 1}}</td>
+            <td>{{ medicament[0] }}</td>
+            <td>{{ medicament[1] }}</td>
+            <td class="text-center">
+              <button type="button" class="btn btn-danger mx-1" data-toggle="modal"
+                      attr.data-target="#deleteMedicament{{medicament.id}}">
+                <span class="icon"><i class="fas fa-trash-alt"></i></span>
+              </button>
+            </td>
+            <div class="no-height">
+              <app-remove-patient-medicament patientNom="{{ patient.nom }} {{ patient.prenom }}"
+                                             idModal="deleteMedicament{{medicament.id}}"
+                                             nom="{{ medicament[0] }}"
+                                             type="{{ medicament[1] }}"
+                                             idMedicament="{{medicament[3]}}"
+                                             idConsultation="{{ medicament[2] }}"></app-remove-patient-medicament>
+            </div>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="no-height">
+    <app-patient-delete idModal="patientDelete{{ patient.id }}" idPatient="{{patient.id}}"
+                        nom="{{ patient.nom }}" prenom="{{ patient.prenom }}"></app-patient-delete>
+
+  </div>
+
+</div>
+
+<app-loader variableShow="{{ show }}"></app-loader>

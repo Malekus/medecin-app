@@ -38,20 +38,6 @@ export class MedecinUpdateComponent implements OnInit {
         this.initForm(data.data)
       })
 
-    this.formService.getDiplomes()
-      .subscribe((data: any) => {
-        this.diplomes = Object.entries(data);
-      })
-
-
-    /*
-    this.formService.getSpecialites()
-      .subscribe((data : any) => {
-        this.specialites = Object.entries(data);
-      })
-
-        */
-
   }
 
   initForm(data) {
@@ -64,12 +50,8 @@ export class MedecinUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-
-    /*this.medecinService.postMedecin(this.updateFormMedecin.value)
-      .subscribe((data : any) => {
-        console.log(data)
-      })
-    */
+    console.log(this.updateFormMedecin.value)
+    console.log(this.diplomes);
   }
 
   getValue(type, value) {

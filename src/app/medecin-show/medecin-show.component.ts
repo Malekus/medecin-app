@@ -12,19 +12,20 @@ export class MedecinShowComponent implements OnInit {
   medecin: object = [];
   centre: object = [];
   consultations: object = [];
+  show;
   constructor(private route: ActivatedRoute, private medecinService: MedecinService) {
   }
 
   ngOnInit() {
     this.medecinService.getMedecin(this.route.snapshot.params['id'])
       .subscribe((data: any) => {
-          this.getMedecin(data.data)
-      }
-
-      );
+        console.log(data.data)
+          this.setMedecin(data.data)
+        this.show = true;
+      });
   }
 
-  getMedecin(data) {
+  setMedecin(data) {
     this.medecin = data;
     this.centre = data.centre;
     this.consultations = data.consultations;

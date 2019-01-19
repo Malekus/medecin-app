@@ -29,6 +29,19 @@ import { CentreAddComponent } from './centre-add/centre-add.component';
 import { ConsultationAddComponent } from './consultation-add/consultation-add.component';
 import { PatientAddComponent } from './patient-add/patient-add.component';
 import { MedecinFormComponent } from './medecin-form/medecin-form.component';
+import { PatientShowComponent } from './patient-show/patient-show.component';
+import { PatientDeleteComponent } from './patient-delete/patient-delete.component';
+import { PatientUpdateComponent } from './patient-update/patient-update.component';
+import { AddPatientCentreComponent } from './add-patient-centre/add-patient-centre.component';
+import { CentreShowComponent } from './centre-show/centre-show.component';
+import { RemovePatientCentreComponent } from './remove-patient-centre/remove-patient-centre.component';
+import { AddPatientConsultationComponent } from './add-patient-consultation/add-patient-consultation.component';
+import { UpdatePatientConsultationComponent } from './update-patient-consultation/update-patient-consultation.component';
+import { RemovePatientConsultationComponent } from './remove-patient-consultation/remove-patient-consultation.component';
+import { LoaderComponent } from './loader/loader.component';
+import { AddPatientMedicamentComponent } from './add-patient-medicament/add-patient-medicament.component';
+import { RemovePatientMedicamentComponent } from './remove-patient-medicament/remove-patient-medicament.component';
+import { UpdatePatientMedicamentComponent } from './update-patient-medicament/update-patient-medicament.component';
 
 
 @NgModule({
@@ -55,7 +68,20 @@ import { MedecinFormComponent } from './medecin-form/medecin-form.component';
     CentreAddComponent,
     ConsultationAddComponent,
     PatientAddComponent,
-    MedecinFormComponent
+    MedecinFormComponent,
+    PatientShowComponent,
+    PatientDeleteComponent,
+    PatientUpdateComponent,
+    AddPatientCentreComponent,
+    CentreShowComponent,
+    RemovePatientCentreComponent,
+    AddPatientConsultationComponent,
+    UpdatePatientConsultationComponent,
+    RemovePatientConsultationComponent,
+    LoaderComponent,
+    AddPatientMedicamentComponent,
+    RemovePatientMedicamentComponent,
+    UpdatePatientMedicamentComponent
   ],
   imports: [
     BrowserModule,
