@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
           console.log(data.specialite)
           let labelSpecialite = []
           let valueSpecialite = []
-          $.each(data.specialite, function (index, value) {
+          data.specialite.forEach(function (value) {
             console.log(value.label);
             labelSpecialite.push(value.label);
             valueSpecialite.push(value.nbSpe);
           });
           let labelMedicament = []
           let typeMedicament = []
-          $.each(data.typeMedicament, function (index, value) {
+          data.typeMedicament.forEach(function (value) {
             labelMedicament.push(value.label);
             typeMedicament.push(value.nbType);
           });
