@@ -17,3 +17,9 @@ Il faut vous rendre dans le dossier du projet
 Puis lancer la commande suivante
 
 `ng serve --proxy-config proxyconfig.json`
+
+## Comment utiliser l'application
+
+Pour utiliser l'application il faut vous rendre dans la partie `Patient`. Depuis cette partie vous pouvez créer, modifier et supprimer des patients. Vous pouvez aussi afficher un patient. Lors de l'affichage du profil d'un patient, vous avez accès a plusieurs fonctionnalités comme lui ajouter une consultation, des médicaments, etc...
+
+Enjoy ! 
