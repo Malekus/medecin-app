@@ -14,7 +14,11 @@ Il faut vous rendre dans le dossier du projet
 
 `cd medecin-app`
 
-Puis lancer la commande suivante
+Puis lancer la commande qui permet d'installer les packages
+
+`npm install --save`
+
+Et lancer le serveur
 
 `ng serve --proxy-config proxyconfig.json`
 
