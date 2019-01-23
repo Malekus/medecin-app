@@ -16,7 +16,7 @@ Il faut vous rendre dans le dossier du projet
 
 Puis lancer la commande qui permet d'installer les packages
 
-`npm install --save`
+`npm install`
 
 Et lancer le serveur
 
